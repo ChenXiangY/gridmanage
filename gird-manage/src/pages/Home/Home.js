@@ -29,6 +29,24 @@ export default class Home extends React.Component {
         }
 
     }
+    OrderTree2 = (TreeNode, fatherid, id, value,nodeData) => {
+        if (TreeNode.value === fatherid) {
+            if (typeof (TreeNode.children) == 'undefined') {
+                TreeNode.children = [];
+            }else if(id==='99'){
+                TreeNode.nodeData.push(nodeData);
+            }
+            TreeNode.children.push({value: id, name: value,nodeData:[nodeData]})
+        } else {
+            if(typeof (TreeNode.children) !== 'undefined' && TreeNode.children.length !==0){
+                TreeNode.children.forEach((ele) => {
+                    this.OrderTree(ele, fatherid, id, value,nodeData)
+                })
+            }
+        }
+
+    }
+
     HandlerManagersToTree = (root, ManagersData) => {
         ManagersData.forEach((ele) => {
             this.OrderTree(root, ele.fatherid, ele.ownid, ele.gridname,ele);

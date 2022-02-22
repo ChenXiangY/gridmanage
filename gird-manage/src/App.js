@@ -14,7 +14,6 @@ export default class App extends React.Component {
         return (
             <ProLayout
                 className={'homePageLayout'}
-                collapsed={true}
                 headerContentRender={()=>{
                     return (
                         <div style={{
@@ -27,6 +26,23 @@ export default class App extends React.Component {
                         </div>
                     )
                 }}
+                route={{
+                    routes:[
+                        {path:'/',
+                        name:'网格长',
+                        component:'Home'},
+                        {
+                         path:'/events',
+                            name:'事件管理',
+                            component:'./pages/Event/Event'
+                        },
+                        {
+                            path:'/score',
+                            name:'积分统计',
+                            component: './pages/Score/Score'
+                        }
+                    ]
+                }}
             >
                 <PageContainer
                     header={{
@@ -37,7 +53,6 @@ export default class App extends React.Component {
                     // 下方内容左侧显示网格长和本级网格信息
                     // 右方显示架构图
                 >
-                    <Home/>
                 </PageContainer>
             </ProLayout>
         )
