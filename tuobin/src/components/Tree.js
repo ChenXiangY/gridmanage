@@ -368,7 +368,7 @@ export default class extends React.Component {
                         },
                         testimg2: {
                             backgroundColor: {
-                                image: './ProfileImg/' + nodeData.ownid + '1.jpg',
+                                image: './ProfileImg/' + TreeNode.nodeData.ownid + '1.jpg',
                             },
                             height: 80,
                             width: 80,
