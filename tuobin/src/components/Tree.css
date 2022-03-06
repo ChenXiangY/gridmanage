@@ -1,0 +1,39 @@
+#Tree{width: '85vw'; 
+    height: '140vh'
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header h1{
+    display: inline-block;
+}
+.inputfile {
+    width: 0.1px; 
+    height: 0.1px; 
+    opacity: 0; 
+    overflow: hidden; 
+    position: absolute; 
+    z-index: -1;
+}
+.inputfile + label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 3vw;
+    text-align: center;
+}
+.inputfile:focus + label,
+.inputfile + label:hover {
+
+}
+.addImg{
+    width:100%;
+    background-color:cornflowerblue;
+    transition: 0.5s;
+    border-radius: 100%;
+}
+.addImg:hover{
+    background-color: mediumslateblue;
+}
