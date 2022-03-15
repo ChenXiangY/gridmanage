@@ -72,6 +72,7 @@ export default class Home extends React.Component {
                 this.HandlerManagersToTree(this.root, Managers);
             })
     }
+
     componentDidMount() {
     }
     getNodeData = (value,ele) => {

@@ -4,12 +4,20 @@ import './index.css';
 import "antd/dist/antd.css";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import {BrowserRouter, Route,Routes} from "react-router-dom";
+// 在这里写Router
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/*" element={<App/>}/>
+                <Route path="*" element={<div>
+                    There is nothing here
+                </div> }/>
+            </Routes>
+        </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 
