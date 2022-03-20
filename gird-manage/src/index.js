@@ -7,7 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route,Routes} from "react-router-dom";
 // 在这里写Router
 ReactDOM.render(
-    <React.StrictMode>
         <BrowserRouter>
             <Routes>
                 <Route path="/*" element={<App/>}/>
@@ -15,8 +14,7 @@ ReactDOM.render(
                     There is nothing here
                 </div> }/>
             </Routes>
-        </BrowserRouter>
-    </React.StrictMode>,
+        </BrowserRouter>,
     document.getElementById('root')
 );
 

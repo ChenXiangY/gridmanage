@@ -14,8 +14,8 @@ export default class Home extends React.Component {
         name: '根节点',
     };
     // 费死劲。
-    OrderTree = (TreeNode, fatherid, id, value,nodeData) => {
-        if (TreeNode.value === fatherid) {
+    OrderTree = (TreeNode, fatherId, id, value,nodeData) => {
+        if (TreeNode.value === fatherId) {
             if (typeof (TreeNode.children) == 'undefined') {
                 TreeNode.children = [];
             }
@@ -23,14 +23,14 @@ export default class Home extends React.Component {
         } else {
             if(typeof (TreeNode.children) !== 'undefined' && TreeNode.children.length !==0){
             TreeNode.children.forEach((ele) => {
-                this.OrderTree(ele, fatherid, id, value,nodeData)
+                this.OrderTree(ele, fatherId, id, value,nodeData)
             })
             }
         }
 
     }
-    OrderTree2 = (TreeNode, fatherid, id, value,nodeData) => {
-        if (TreeNode.value === fatherid) {
+    OrderTree2 = (TreeNode, fatherId, id, value,nodeData) => {
+        if (TreeNode.value === fatherId) {
             if (typeof (TreeNode.children) == 'undefined') {
                 TreeNode.children = [];
             }else if(id==='99'){
@@ -40,7 +40,7 @@ export default class Home extends React.Component {
         } else {
             if(typeof (TreeNode.children) !== 'undefined' && TreeNode.children.length !==0){
                 TreeNode.children.forEach((ele) => {
-                    this.OrderTree(ele, fatherid, id, value,nodeData)
+                    this.OrderTree(ele, fatherId, id, value,nodeData)
                 })
             }
         }
@@ -49,7 +49,7 @@ export default class Home extends React.Component {
 
     HandlerManagersToTree = (root, ManagersData) => {
         ManagersData.forEach((ele) => {
-            this.OrderTree(root, ele.fatherid, ele.ownid, ele.gridname,ele);
+            this.OrderTree(root, ele.fatherId, ele.ownId, ele.gridName,ele);
         })
         // 处理结束之后直接setState
         this.setState({

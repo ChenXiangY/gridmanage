@@ -2,10 +2,10 @@ import {Cascader, Tree} from "antd";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 
-export default function UseGridSwitcherHook() {
+export default function useGridSwitcherHook() {
     // 定义一个hook去拿到数据值，和处理后数据的值。
     const [GridData, setGridData] = useState([])
-    const [TreeGridData, setTreeGridData] = useState(null);
+    const [TreeGridData, setTreeGridData] = useState(undefined);
     let root = {
         value: '0',
         name: '根节点',
@@ -34,28 +34,26 @@ export default function UseGridSwitcherHook() {
         let Headers = {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
-
         }
         axios.post(url, null, {
             headers: Headers
         })
             .then((response) => {
-                console.log(response.data)
                 setGridData(response.data)
                 HandlerManagersToTree(root, GridData);
             })
     }
     let HandlerManagersToTree = (root, ManagersData) => {
         ManagersData.forEach((ele) => {
-            OrderTree(root, ele.fatherid, ele.ownid, ele.gridname, ele);
+            OrderTree(root, ele.fatherId, ele.ownId, ele.gridName, ele);
         })
         // 处理结束之后直接setState
-        setTreeGridData(root)
+        setTreeGridData(root.children)
     }
 
 
-    let OrderTree = (TreeNode, fatherid, id, value, nodeData) => {
-        if (TreeNode.value === fatherid) {
+    let OrderTree = (TreeNode, fatherId, id, value, nodeData) => {
+        if (TreeNode.value === fatherId) {
             if (typeof (TreeNode.children) == 'undefined') {
                 TreeNode.children = [];
             }
@@ -63,13 +61,12 @@ export default function UseGridSwitcherHook() {
         } else {
             if (typeof (TreeNode.children) !== 'undefined' && TreeNode.children.length !== 0) {
                 TreeNode.children.forEach((ele) => {
-                   OrderTree(ele, fatherid, id, value, nodeData)
+                   OrderTree(ele, fatherId, id, value, nodeData)
                 })
             }
         }
 
     }
-    console.log(TreeGridData)
     return (
         [
             GridData,

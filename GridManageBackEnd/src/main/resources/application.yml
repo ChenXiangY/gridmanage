@@ -10,5 +10,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 
 mybatis:
-  mapper-locations: classpath:mapper/*Mapper.xml
+#  mapper-locations: classpath:mapper/*Mapper.xml
   type-aliases-package: com.gridmanage.backend.entity
+mapper:
+  style: normal

@@ -1,0 +1,14 @@
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    display: flex;
+    justify-content: space-around;
+    padding:1%;
+    width:100%
+}
+#GridSwitcherHookVersion{
+    width: 70%;
+}

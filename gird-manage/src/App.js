@@ -80,7 +80,6 @@ export default function App() {
                 <Routes>
                     <Route path="/home" element={<Home/>}/>
                     <Route path="/people" element={<People/>}/>
-
                 </Routes>
             </PageContainer>
         </ProLayout>

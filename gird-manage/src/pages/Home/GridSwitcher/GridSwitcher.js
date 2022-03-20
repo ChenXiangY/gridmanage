@@ -14,6 +14,7 @@ export default class GridSwitcher extends React.Component {
     }
 
     render() {
+        console.log(this.props.value)
         return (
             <Cascader
                 fieldNames={{label: 'name'}}
