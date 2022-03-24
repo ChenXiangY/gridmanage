@@ -37,7 +37,7 @@ public class PeopleController {
             if (Objects.equals(set1.getKey(), "current") || Objects.equals(set1.getKey(), "pageSize") || set1.getValue() == "") {
                 continue;
             }
-            if (Objects.equals(set1.getKey(), "ownId")) {
+            if (Objects.equals(set1.getKey(), "ownId")  && ((String)set1.getValue()).length()<13) {
 //                查出来五级网格编号，循环查询
                 List<Managers> fiveLevelManages = this.managersMapperCommon.getXLevelManagersOf((String) set1.getValue());
                 fiveLevelManages.forEach((ele) -> {
@@ -58,7 +58,6 @@ public class PeopleController {
     public List<People> getAllPeopleWithPagination() {
         return this.peopleMapper.selectAll();
     }
-
 
     @ResponseBody
     @RequestMapping("/getAllPeopleByOwnId")

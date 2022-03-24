@@ -117,7 +117,6 @@ public class People {
     this.liveAddress = liveAddress;
   }
 
-
   public String getHomeAddress() {
     return homeAddress;
   }

@@ -57,7 +57,11 @@ export default function useGridSwitcherHook() {
             if (typeof (TreeNode.children) == 'undefined') {
                 TreeNode.children = [];
             }
-            TreeNode.children.push({value: id, name: value, nodeData: nodeData})
+            if(id==='99'){
+                TreeNode.nodeData.push(nodeData)
+            }else{
+            TreeNode.children.push({value: id, name: value, nodeData: [nodeData]})
+            }
         } else {
             if (typeof (TreeNode.children) !== 'undefined' && TreeNode.children.length !== 0) {
                 TreeNode.children.forEach((ele) => {
@@ -65,7 +69,6 @@ export default function useGridSwitcherHook() {
                 })
             }
         }
-
     }
     return (
         [

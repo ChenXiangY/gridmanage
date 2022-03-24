@@ -12,6 +12,9 @@ export default function GridSwitcherHookVersion(props){
                 props.getNodeData(value, ele)
             }}
             placeholder={'please Select'}
+            style={{
+                width:"70%"
+            }}
             changeOnSelect/>
     );
 }

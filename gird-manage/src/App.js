@@ -20,6 +20,9 @@ export default function App() {
     return (
         <ProLayout
             className={'homePageLayout'}
+            layout={"top"}
+            fixSiderbar={"true"}
+            fixedHeader={true}
             headerContentRender={() => {
                 return (
                     <div style={{
@@ -49,11 +52,7 @@ export default function App() {
                         name: '人员管理',
                         component: './pages/People/People'
                     },
-                    {
-                        path: './score',
-                        name: '积分统计',
-                        component: './pages/Score/Score'
-                    }
+
                 ]
             }}
             menuItemRender={(item, dom) => (

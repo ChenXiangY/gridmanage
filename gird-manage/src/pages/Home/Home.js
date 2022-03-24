@@ -29,27 +29,28 @@ export default class Home extends React.Component {
         }
 
     }
-    OrderTree2 = (TreeNode, fatherId, id, value,nodeData) => {
+    OrderTree2 = (TreeNode, fatherId, id, value, nodeData) => {
         if (TreeNode.value === fatherId) {
             if (typeof (TreeNode.children) == 'undefined') {
                 TreeNode.children = [];
-            }else if(id==='99'){
-                TreeNode.nodeData.push(nodeData);
             }
-            TreeNode.children.push({value: id, name: value,nodeData:[nodeData]})
+            if(id==='99'){
+                TreeNode.nodeData.push(nodeData)
+            }else{
+                TreeNode.children.push({value: id, name: value, nodeData: [nodeData]})
+            }
         } else {
-            if(typeof (TreeNode.children) !== 'undefined' && TreeNode.children.length !==0){
+            if (typeof (TreeNode.children) !== 'undefined' && TreeNode.children.length !== 0) {
                 TreeNode.children.forEach((ele) => {
-                    this.OrderTree(ele, fatherId, id, value,nodeData)
+                    this.OrderTree2(ele, fatherId, id, value, nodeData)
                 })
             }
         }
-
     }
 
     HandlerManagersToTree = (root, ManagersData) => {
         ManagersData.forEach((ele) => {
-            this.OrderTree(root, ele.fatherId, ele.ownId, ele.gridName,ele);
+            this.OrderTree2(root, ele.fatherId, ele.ownId, ele.gridName,ele);
         })
         // 处理结束之后直接setState
         this.setState({
@@ -80,6 +81,7 @@ export default class Home extends React.Component {
             nodeData:ele
         })
     }
+
     constructor() {
         super();
         this.state={
@@ -87,6 +89,8 @@ export default class Home extends React.Component {
             nodeData:undefined
         }
     }
+
+
     render() {
         return (
             <div>

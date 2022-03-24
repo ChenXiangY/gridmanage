@@ -1,15 +1,19 @@
 package com.gridmanage.backend.controller;
 
 import com.alibaba.druid.sql.ast.statement.SQLWithSubqueryClause;
+import com.gridmanage.backend.entity.GridMessage;
 import com.gridmanage.backend.entity.Managers;
 import com.gridmanage.backend.entity.People;
 import com.gridmanage.backend.mapper.ManagersMapperCommon;
 import com.gridmanage.backend.service.ManagerService;
+import org.apache.catalina.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Example;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -46,7 +50,14 @@ public class ManagerController {
         return this.managersMapperCommon.selectByExample(example);
     }
 
+    @ResponseBody
+    @RequestMapping("/getManagersWithGridMessage")
+    public GridMessage getManagersWithGridMessage(@RequestBody Managers managers){
+//        根据ownId直接查出来网格数据
+        GridMessage gridMessage = this.managersMapperCommon.getManagersWithGridMessage(managers.getOwnId());
+        return gridMessage;
 
+    }
 
 }
 
