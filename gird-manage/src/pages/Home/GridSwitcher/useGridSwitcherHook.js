@@ -70,8 +70,8 @@ export default function useGridSwitcherHook() {
         }
     }
 
-    let OrderTree2 = (TreeNode, fatherid, id, value, nodeData) => {
-        if (TreeNode.value === fatherid) {
+    let OrderTree2 = (TreeNode, fatherId, id, value, nodeData) => {
+        if (TreeNode.value === fatherId) {
             let emphasis = {
                 disabled: false,
                 focus: 'self',
@@ -91,15 +91,15 @@ export default function useGridSwitcherHook() {
                 width: 130,
                 // overflow:'break',
                 // borderColor: "#B034FF",   // 文字块的边框色
-                backgroundColor: new echarts.graphic.LinearGradient(
-                    0, 0, 1, 1,
-                    [
-                        {offset: 0, color: '#dbe1e5'},
-                        {offset: 0.5, color: '#90c6f5'},
-                        {offset: 1, color: '#87c2cc'}
-                    ]
-                )
-                ,
+                // backgroundColor: new echarts.graphic.LinearGradient(
+                //     0, 0, 1, 1,
+                //     [
+                //         {offset: 0, color: '#dbe1e5'},
+                //         {offset: 0.5, color: '#90c6f5'},
+                //         {offset: 1, color: '#87c2cc'}
+                //     ]
+                // )
+                // ,
                 rich: {
                     backtitle: {
                         backgroundColor: '#63a9e8',
@@ -109,7 +109,7 @@ export default function useGridSwitcherHook() {
                     },
                     testimg: {
                         backgroundColor: {
-                            image: './ProfileImg/' + id + '.jpg',
+                            image: TreeNode.profileImg,
                         },
                         height: 80,
                         width: 80,
@@ -137,25 +137,25 @@ export default function useGridSwitcherHook() {
                 //     //   拼接出来数据
                 //     return '{testimg|}'+'\t{testimg|}\n'+'{testmessage|'+testname+'}'+'\t\t\t\t\t\t\t\t\t\t\t{testmessage|'+testname+'}\n'
                 //     +'{testmessage|'+testphone+'}'+'\t\t\t\t{testmessage|'+testphone+'}\n'
-                //     +'{testmessage|'+testgridname+'}'
+                //     +'{testmessage|'+testgridName+'}'
                 //   },
                 formatter: function (param) {
                     //   拼接出来数据
-                    // 修改gridname
-                    let resultgridstring = nodeData.gridname.charAt(0)
-                    for (let i = 1; i < nodeData.gridname.length; i++) {
+                    // 修改gridName
+                    let resultgridstring = nodeData.gridName.charAt(0)
+                    for (let i = 1; i < nodeData.gridName.length; i++) {
                         if (i % 8 === 0) {
-                            resultgridstring = resultgridstring + '\n' + nodeData.gridname.charAt(i)
+                            resultgridstring = resultgridstring + '\n' + nodeData.gridName.charAt(i)
                         } else {
-                            resultgridstring = resultgridstring + nodeData.gridname.charAt(i)
+                            resultgridstring = resultgridstring + nodeData.gridName.charAt(i)
                         }
                     }
-                    // if (nodeData.gridname.length > 6) {
+                    // if (nodeData.gridName.length > 6) {
                     //     resultgridstring = resultgridstring.slice(0,5)+'\n'+resultgridstring.slice(5)
                     // }
-                    return '{backtitle|\t\n\n}' + '{testimg|}\n'
-                        + '{testmessage0|' + nodeData.name + '}\n'
-                        + '{testmessage1|' + nodeData.ownid + '}\n'
+                    // return '{backtitle|\t\n\n}' + '{testimg|}\n'
+                        return  '{testmessage0|' + nodeData.name + '}\n'
+                        + '{testmessage1|' + nodeData.ownId + '}\n'
                         + '{testmessage1|' + nodeData.phone + '}\n'
                         + '{testmessage1|' + resultgridstring + '}'
                 },
@@ -176,15 +176,15 @@ export default function useGridSwitcherHook() {
                     width: 260,
                     // overflow:'break',
                     // borderColor: "#B034FF",   // 文字块的边框色
-                    backgroundColor: new echarts.graphic.LinearGradient(
-                        0, 0, 1, 1,
-                        [
-                            {offset: 0, color: '#dbe1e5'},
-                            {offset: 0.5, color: '#90c6f5'},
-                            {offset: 1, color: '#87c2cc'}
-                        ]
-                    )
-                    ,
+                    // backgroundColor: new echarts.graphic.LinearGradient(
+                    //     0, 0, 1, 1,
+                    //     [
+                    //         {offset: 0, color: '#dbe1e5'},
+                    //         {offset: 0.5, color: '#90c6f5'},
+                    //         {offset: 1, color: '#87c2cc'}
+                    //     ]
+                    // )
+                    // ,
                     rich: {
                         backtitle: {
                             backgroundColor: '#63a9e8',
@@ -194,7 +194,7 @@ export default function useGridSwitcherHook() {
                         },
                         testimg1: {
                             backgroundColor: {
-                                image: './ProfileImg/' + TreeNode.nodeData.ownid + '.jpg',
+                                image: TreeNode.profileImg,
                             },
                             height: 80,
                             width: 80,
@@ -205,7 +205,7 @@ export default function useGridSwitcherHook() {
                         },
                         testimg2: {
                             backgroundColor: {
-                                image: './ProfileImg/' + TreeNode.nodeData.ownid + '1.jpg',
+                                image:nodeData.profileImg,
                             },
                             height: 80,
                             width: 80,
@@ -231,37 +231,37 @@ export default function useGridSwitcherHook() {
                     },
                     formatter: function (param) {
                         //   拼接出来数据
-                        // 修改gridname
-                        let resultgridstring = nodeData.gridname.charAt(0)
+                        // 修改gridName
+                        let resultgridstring = nodeData.gridName.charAt(0)
 
-                        for (let i = 1; i < nodeData.gridname.length; i++) {
+                        for (let i = 1; i < nodeData.gridName.length; i++) {
                             if (i % 8 === 0) {
-                                resultgridstring = resultgridstring + '\n' + nodeData.gridname.charAt(i)
+                                resultgridstring = resultgridstring + '\n' + nodeData.gridName.charAt(i)
                             } else {
-                                resultgridstring = resultgridstring + nodeData.gridname.charAt(i)
+                                resultgridstring = resultgridstring + nodeData.gridName.charAt(i)
                             }
                         }
 
-                        return '{backtitle|\t\n\n}'
-                            + '{testimg1|}' + '\t' + '{testimg2|}\n'
+                        // return '{backtitle|\t\n\n}'
+                            return  '{testimg1|}' + '\t' + '{testimg2|}\n'
                             + '{testmessage0|' + TreeNode.nodeData.name + '}\t\t\t\t' + '{testmessage0|' + nodeData.name + '}\n'
                             + '{testmessage1|' + TreeNode.nodeData.phone + '}\t\t\t\t\t' + '{testmessage1|' + nodeData.phone + '}\n'
-                            + '{testmessage1|' + TreeNode.nodeData.ownid + '}\n'
+                            + '{testmessage1|' + TreeNode.nodeData.ownId + '}\n'
                             + '{testmessage1|' + resultgridstring + '}'
                     },
                     // formatter: function (param) {
                     //     //   拼接出来数据
-                    //     // 修改gridname
+                    //     // 修改gridName
                     //     let resultgridstring=''
                     //
-                    //     for(let i =0;i<nodeData.gridname.length;i++){
+                    //     for(let i =0;i<nodeData.gridName.length;i++){
                     //         if(i%8===0){
-                    //             resultgridstring=resultgridstring+'\n'+nodeData.gridname.charAt(i)
+                    //             resultgridstring=resultgridstring+'\n'+nodeData.gridName.charAt(i)
                     //         }else{
-                    //             resultgridstring=resultgridstring+nodeData.gridname.charAt(i)
+                    //             resultgridstring=resultgridstring+nodeData.gridName.charAt(i)
                     //         }
                     //     }
-                    //     // if (nodeData.gridname.length > 6) {
+                    //     // if (nodeData.gridName.length > 6) {
                     //     //     resultgridstring = resultgridstring.slice(0,5)+'\n'+resultgridstring.slice(5)
                     //     // }
                     //
@@ -284,12 +284,12 @@ export default function useGridSwitcherHook() {
                 }
                 TreeNode.emphasis=emphasis
             } else {
-                TreeNode.children.push({value: id, name: value, emphasis:emphasis,label: lableSet, nodeData: [nodeData]})
+                TreeNode.children.push({value: id, name: value, emphasis:emphasis,label: lableSet, nodeData: nodeData})
             }
         } else {
             if (typeof (TreeNode.children) !== 'undefined' && TreeNode.children.length !== 0) {
                 TreeNode.children.forEach((ele) => {
-                    OrderTree2(ele, fatherid, id, value, nodeData)
+                    OrderTree2(ele, fatherId, id, value, nodeData)
                 })
             }
         }

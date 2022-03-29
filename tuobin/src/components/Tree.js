@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Children} from "react";
 import * as echarts from "echarts";
 import * as XLSX from 'xlsx/xlsx.mjs';
 import './Tree.css';
@@ -112,6 +112,7 @@ export default class extends React.Component {
                 this.myChart.setOption(
                     (this.option)
                 )
+                // 给树绑定一个点击事件
                 //    写个事件绑定，blur的
             } catch (e) {
                 // 这里可以抛出文件类型错误不正确的相关提示
@@ -121,6 +122,24 @@ export default class extends React.Component {
         };
         // 以二进制方式打开文件
         fileReader.readAsBinaryString(files[0]);
+    }
+
+    collapsedTree = (data,TreeNode)=>{
+        console.log(data)
+        if(data.children !== undefined){
+            data.children.forEach((ele)=>{
+                if(ele.value === TreeNode.value){
+                    if(ele.children !== undefined){
+                        ele.children.forEach((ele)=>{
+                            ele.label=1
+                            ele.collapsed=true
+                            console.log(data)
+                        })
+                    }
+                //    如果找到了这个节点，那么以这个节点为根的所有展开的子节点全部都修改为折叠
+                }
+            })
+        }
     }
 
     OrderTree = (TreeNode, fatherid, id, value, nodeData) => {
