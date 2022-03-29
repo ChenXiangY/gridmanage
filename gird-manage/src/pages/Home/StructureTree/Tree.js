@@ -20,9 +20,8 @@ export default class StructureTree extends React.Component {
     handlerTreeClick=(ele)=>{
         this.props.getNodeData(ele.value,ele.data.nodeData)
     }
+
     componentDidMount() {
-        let ROOT_PATH =
-            'https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/examples';
         let chartDom = document.getElementById('TreeContainer');
         this.myChart = echarts.init(chartDom);
         this.option={
@@ -67,9 +66,6 @@ export default class StructureTree extends React.Component {
             this.myChart.setOption(
                 (this.option)
             )
-            this.myChart.on('click',(ele)=>this.handlerTreeClick(ele))
-
-
     }
 
 

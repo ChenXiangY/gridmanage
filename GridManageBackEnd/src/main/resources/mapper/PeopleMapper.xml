@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gridmanage.backend.mapper.ManagerMapper">
-    <select id="findAllManagers" resultType="com.gridmanage.backend.entity.Managers">
+<mapper namespace="com.gridmanage.backend.mapper.PeopleMapper">
+    <select id="getPeopleBy" resultType="com.gridmanage.backend.entity.People">
         SELECT * from managers order by fatherid asc ,ownid asc
     </select>
 </mapper>

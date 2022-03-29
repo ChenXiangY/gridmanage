@@ -6,55 +6,86 @@ import ProLayout, {PageContainer} from "@ant-design/pro-layout";
 import './App.css';
 import {Button} from "antd";
 import Home from "./pages/Home/Home";
+import {BrowserRouter, Route, Routes, useParams, useLocation, useNavigate} from "react-router-dom";
+import Event from "./pages/Event/Event";
+import People from "./pages/People/People";
+import HomeFunc from "./pages/Home/HomeFunc";
+
 
 moment.locale('zh-cn');
 
-export default class App extends React.Component {
-    render() {
-        return (
-            <ProLayout
-                className={'homePageLayout'}
-                headerContentRender={()=>{
-                    return (
-                        <div style={{
-                            textAlign:'center',
-                            fontSize:'20px',
-                            fontWeight:'bold'
-                        }}
-                        >
-                            日月湖街道五级网格化管理系统
-                        </div>
-                    )
-                }}
-                route={{
-                    routes:[
-                        {path:'/',
-                        name:'网格长',
-                        component:'Home'},
-                        {
-                         path:'/events',
-                            name:'事件管理',
-                            component:'./pages/Event/Event'
-                        },
-                        {
-                            path:'/score',
-                            name:'积分统计',
-                            component: './pages/Score/Score'
-                        }
-                    ]
-                }}
-            >
-                <PageContainer
-                    header={{
-                        CSSStyleRule:{padding:'0px'}
+export default function App() {
+    let navigate = useNavigate();
+    let location = useLocation();
+
+    return (
+        <ProLayout
+            className={'homePageLayout'}
+            layout={"top"}
+            fixSiderbar={"true"}
+            fixedHeader={true}
+            headerContentRender={() => {
+                return (
+                    <div style={{
+                        textAlign: 'center',
+                        fontSize: '20px',
+                        fontWeight: 'bold'
                     }}
-                    // 一个级联选择框
-                    // 一个搜索框
-                    // 下方内容左侧显示网格长和本级网格信息
-                    // 右方显示架构图
+                    >
+                        日月湖街道五级网格化管理系统
+                    </div>
+                )
+            }}
+            location={{
+                pathname: '/'
+            }}
+            route={{
+                path: '/',
+                component: './pages/Home/Home',
+                routes: [
+                    {
+                        path: '/home',
+                        name: '网格长',
+                        component: './pages/Home/Home'
+                    },
+                    {
+                        path: '/people',
+                        name: '人员管理',
+                        component: './pages/People/People'
+                    },
+
+                ]
+            }}
+            menuItemRender={(item, dom) => (
+                <a
+                    onClick={() => {
+                        navigate(item.path);
+                    }}
                 >
-                </PageContainer>
-            </ProLayout>
-        )
-    }
+                    {dom}
+                </a>
+            )}
+
+        >
+            <PageContainer
+                header={{
+                    CSSStyleRule: {padding: '0px'}
+                }}
+                // 一个级联选择框
+                // 一个搜索框
+                // 下方内容左侧显示网格长和本级网格信息
+                // 右方显示架构图
+
+            >
+                <Routes>
+                    <Route path="/home" element={<HomeFunc/>}/>
+                    <Route path="/people" element={<People/>}/>
+                </Routes>
+            </PageContainer>
+        </ProLayout>
+    )
+
+
 }
+
+
