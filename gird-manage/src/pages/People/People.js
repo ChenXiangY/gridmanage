@@ -18,12 +18,22 @@ export default function People() {
     const [Managers, TreeManagers] = useGridSwitcherHook();
     const [NodeData, setNodeData] = useState([[],]);
     const [searchParams, setSearchParams] = useState({
-        pageSize: 10,
-        current: 1
+        pageSize: 20,
     });
     const [list, setList] = useState([]);
     const [columns, setColumns] = useState([]);
     const [gridMessage, setGridMessage] = useState([]);
+
+    const [test, setTest] = useState(0);
+
+    useEffect(() => {
+        getGridMessage("17")
+        test1()
+    }, []);
+    let test1 = () => {
+        console.log('test')
+        setTest(1)
+    }
     let headers = {
         "Content-Type": "application/json",
         'Access-Control-Allow-Origin': '*'
@@ -84,30 +94,67 @@ export default function People() {
         }
         return result
     }
-    let getgridMessage = (ownId) => {
-        axios.post(
-            "http://localhost:8080/getManageByColumnWithgridMessage",
-            {"ownId": ownId},
-            {headers: headers}
-        ).then((r) => {
-            setList(r.data)
+    let getGridMessage = (value) => {
+        // 得到网格长信息.
+        axios.post("http://localhost:8080/getManagesByColumn",
+            {
+                ownId: value
+            },
+            {
+                headers: headers
+            }).then((r) => {
+            console.log(r.data)
+            setNodeData(r.data)
         })
-    }
-    let getNodeData = (value, ele) => {
-        //    拿到nodedata之后,传值给request,得到当前节点下所有人员的信息.
-        setSearchParams({ownId: ele.nodeData[0].ownId})
-        setNodeData(ele.nodeData)
-
+        // 得到格情信息
         axios.post(
             'http://localhost:8080/getManagersWithGridMessage'
             , {
-                ownId: ele.nodeData[0].ownId
+                ownId: value
             }, {
                 headers: headers
             }
         ).then((r) => {
             setGridMessage(r.data)
         })
+    }
+    let getNodeData = (value, ele) => {
+        //    拿到nodedata之后,传值给request,得到当前节点下所有人员的信息.
+        setSearchParams({ownId: ele.nodeData[0].ownId})
+        setNodeData(ele.nodeData)
+        getGridMessage(value[value.length - 1])
+    }
+    let homeTypeKeyValue = {
+        "homeTypeSimple": "一般户",
+        "homeTypeParty": "党员户",
+        "homeTypePovertyAlleviation": "脱贫户",
+        "homeTypeMonitorHousehold": "监测户",
+        "homeTypeRuralAssurance": "农村低保户",
+        "homeTypeCityAssurance": "城市低保户",
+        "homeTypeKeyPoverty": "重点帮扶关注人员",
+        "homeTypeDisabled": "残疾户",
+        "homeTypeHasCompany": "",
+        "homeTypeJail": "刑满释放户",
+        "homeTypePunishment": "社区矫正户",
+        "homeTypeDrug": "吸毒人员",
+        "homeTypeAccident": "肇事肇祸",
+        "homeTypeMentalIllness": "精神障碍人员",
+    }
+    let specialGroupKeyValue = {
+        "SpecialGroupJail": "刑满释放人员",
+        "SpecialGroupPunishment": "社区矫正人员",
+        "SpecialGroupDrug": "吸毒人员",
+        "SpecialGroupAccident": "肇事肇祸人员",
+        "SpecialGroupMentalIllness": "精神障碍人员",
+    }
+    let keyAssistantKeyValue = {
+        "KeyAssistantAIDS": "艾滋病人员",
+        "KeyAssistantTeenager": "重点青少年",
+        "KeyAssistantPetition": "重点上访人员",
+        "KeyAssistantIllegalReligion": "非法宗教人员",
+        "KeyAssistantMilitary": "涉军人员",
+        "KeyAssistantLeft": "留守人员",
+        "KeyAssistantWAL": "鳏寡孤独人员",
     }
     let managerColumns = [
         {
@@ -133,7 +180,7 @@ export default function People() {
     ]
     let peopleColumns = [
         {
-            title: "户号",
+            title: "网格编号",
             dataIndex: "ownId"
         },
         {
@@ -141,16 +188,42 @@ export default function People() {
             dataIndex: "name"
         },
         {
+            title: "户人口",
+            dataIndex: "memberCount"
+        },
+        {
             title: "户属性",
-            dataIndex: 'homeType'
+            dataIndex: 'homeType',
+            // filters:true,
+            // valueType:"select",
+            // valueEnum:{
+            //     homeTypeSimple: {text:'一般户'},
+            //     homeTypeDisabled: {text:'残疾户'}
+            // }
         },
         {
             title: "与本人关系",
-            dataIndex: "relationship"
+            dataIndex: "relationship",
         },
         {
             title: "性别",
             dataIndex: "sex"
+        },
+        {
+            title: "年龄",
+            dataIndex: "age"
+        },
+        {
+            title: "职业",
+            dataIndex: "career"
+        },
+        {
+            title: "特殊人群",
+            dataIndex: "specialGroup"
+        },
+        {
+            title: "重点关注人员",
+            dataIndex: "keyAssistance"
         },
         {
             title: "身份证号",
@@ -165,16 +238,30 @@ export default function People() {
             dataIndex: 'workAddress'
         },
         {
-            title: "耕地面积",
+            title: "户耕地面积",
             dataIndex: "cultivateArea"
         },
         {
             title: "联系方式",
             dataIndex: 'phone'
         },
+        {
+            title: "网格长",
+            dataIndex: "fatherId",
+            render: (text, record, index, action) => {
+                return (
+                    <Button
+                        onClick={() => {
+                            getGridMessage(text)
+                        }}>
+                        网格详情
+                    </Button>
+                )
+            }
+        }
     ]
     let renderBasicMessage = () => {
-       const result = NodeData.map((ele) => {
+        const result = NodeData.map((ele) => {
             return (
                 <div>
                     <img src={ele.profileImg} alt=""/>
@@ -184,6 +271,20 @@ export default function People() {
             )
         })
         return result
+    }
+    let handleData = (data) => {
+        if (data.length !== 0) {
+            data.forEach((ele) => {
+                for (let homeType in homeTypeKeyValue) {
+                    if (ele[homeType] === true) {
+                        if (ele["homeType"] === undefined) {
+                            ele["homeType"] = ""
+                        }
+                        ele["homeType"] += homeTypeKeyValue[homeType]
+                    }
+                }
+            })
+        }
     }
     return (
         <div className={'content'}>
@@ -249,8 +350,7 @@ export default function People() {
                                 // 第一个参数 params 查询表单和 params 参数的结合
                                 // 第一个参数中一定会有 pageSize 和  current ，这两个参数是 antd 的规范
                                 params: {
-                                    pageSize: 10
-
+                                    pageSize: 20
                                 },
                                 sort,
                                 filter,
@@ -264,9 +364,12 @@ export default function People() {
                                         headers: headers
                                     }
                                 ).then((res) => {
+                                    //处理res.data,处理户属性,特殊人群,重点帮扶人员
+                                    handleData(res.data.data)
                                     return ({
-                                        data: res.data,
+                                        data: res.data.data,
                                         success: true,
+                                        total: res.data.extraMessage
                                     })
                                 })
                             }}
@@ -275,7 +378,11 @@ export default function People() {
                                 collapsed: false,
                             }}
                             rowKey={"id"}
-                            pagination={{defaultPageSize: 20}}
+                            pagination={{
+                                defaultPageSize: 20, onChange: (page, pageSize) => {
+
+                                }
+                            }}
                         />
                     </ProCard>
                 </ProCard>

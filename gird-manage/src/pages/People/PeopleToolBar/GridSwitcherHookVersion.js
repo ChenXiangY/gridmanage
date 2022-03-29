@@ -15,6 +15,7 @@ export default function GridSwitcherHookVersion(props){
             style={{
                 width:"70%"
             }}
+            defaultValue={["17"]}
             changeOnSelect/>
     );
 }

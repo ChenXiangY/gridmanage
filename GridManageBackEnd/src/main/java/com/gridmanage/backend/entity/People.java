@@ -7,26 +7,26 @@ public class People {
   private Integer id;
   private String fatherId;
   private String ownId;
-  private long memberCount;
+  private Integer memberCount;
   private String liveAddress;
   private String homeAddress;
   private String homeName;
   private String liveType;
   private String isAgriculture;
-  private long homeTypeSimple;
-  private long homeTypeParty;
-  private long homeTypePovertyAlleviation;
-  private long homeTypeMonitorHousehold;
-  private long homeTypeRuralAssurance;
-  private long homeTypeCityAssurance;
-  private long homeTypeKeyPoverty;
-  private long homeTypeDisabled;
-  private long homeTypeHasCompany;
-  private long homeTypeJail;
-  private long homeTypePunishment;
-  private long homeTypeDrug;
-  private long homeTypeAccident;
-  private long homeTypeMentalIllness;
+  private Boolean homeTypeSimple;
+  private Boolean homeTypeParty;
+  private Boolean homeTypePovertyAlleviation;
+  private Boolean homeTypeMonitorHousehold;
+  private Boolean homeTypeRuralAssurance;
+  private Boolean homeTypeCityAssurance;
+  private Boolean homeTypeKeyPoverty;
+  private Boolean homeTypeDisabled;
+  private Boolean homeTypeHasCompany;
+  private Boolean homeTypeJail;
+  private Boolean homeTypePunishment;
+  private Boolean homeTypeDrug;
+  private Boolean homeTypeAccident;
+  private Boolean homeTypeMentalIllness;
   private String houseType;
   private String houseFrom;
   private String houseOwnerName;
@@ -35,7 +35,7 @@ public class People {
   private String name;
   private String relationship;
   private String sex;
-  private long age;
+  private Integer age;
   private String ethnic;
   private String maritalStatus;
   private String politicalStatus;
@@ -46,32 +46,31 @@ public class People {
   private String workAddress;
   private String idCard;
   private String phone;
-  private long specialGroupJail;
-  private long specialGroupPunishment;
-  private long specialGroupDrug;
-  private long specialGroupAccident;
-  private long specialGroupMentalIllness;
-  private long keyAssistantAids;
-  private long keyAssistantTeenager;
-  private long keyAssistantPetition;
-  private long keyAssistantIllegalReligion;
-  private long keyAssistantMilitary;
-  private long keyAssistantLeft;
-  private long keyAssistantWal;
-  private long hasCovidVaccine;
-  private long hasMedicalInsurance;
-  private long hasPension;
+  private Boolean specialGroupJail;
+  private Boolean specialGroupPunishment;
+  private Boolean specialGroupDrug;
+  private Boolean specialGroupAccident;
+  private Boolean specialGroupMentalIllness;
+  private Boolean keyAssistantAids;
+  private Boolean keyAssistantTeenager;
+  private Boolean keyAssistantPetition;
+  private Boolean keyAssistantIllegalReligion;
+  private Boolean keyAssistantMilitary;
+  private Boolean keyAssistantLeft;
+  private Boolean keyAssistantWAL;
+  private Boolean hasCovidVaccine;
+  private Boolean hasMedicalInsurance;
+  private Boolean hasPension;
   private String houseStructure;
-  private long houseArea;
+  private Integer houseArea;
   private String roadToHouse;
-  private long toiletChanged;
-  private long hasTapWater;
-  private double cultivateArea;
-  private long landTransfer;
+  private Boolean toiletChanged;
+  private Boolean hasTapWater;
+  private Float cultivateArea;
+  private Boolean landTransfer;
   private String primaryIncome;
   private String other;
   private String village;
-
 
   public Integer getId() {
     return id;
@@ -81,7 +80,6 @@ public class People {
     this.id = id;
   }
 
-
   public String getFatherId() {
     return fatherId;
   }
@@ -89,7 +87,6 @@ public class People {
   public void setFatherId(String fatherId) {
     this.fatherId = fatherId;
   }
-
 
   public String getOwnId() {
     return ownId;
@@ -99,15 +96,13 @@ public class People {
     this.ownId = ownId;
   }
 
-
-  public long getMemberCount() {
+  public Integer getMemberCount() {
     return memberCount;
   }
 
-  public void setMemberCount(long memberCount) {
+  public void setMemberCount(Integer memberCount) {
     this.memberCount = memberCount;
   }
-
 
   public String getLiveAddress() {
     return liveAddress;
@@ -125,7 +120,6 @@ public class People {
     this.homeAddress = homeAddress;
   }
 
-
   public String getHomeName() {
     return homeName;
   }
@@ -133,7 +127,6 @@ public class People {
   public void setHomeName(String homeName) {
     this.homeName = homeName;
   }
-
 
   public String getLiveType() {
     return liveType;
@@ -143,7 +136,6 @@ public class People {
     this.liveType = liveType;
   }
 
-
   public String getIsAgriculture() {
     return isAgriculture;
   }
@@ -152,132 +144,117 @@ public class People {
     this.isAgriculture = isAgriculture;
   }
 
-
-  public long getHomeTypeSimple() {
+  public Boolean getHomeTypeSimple() {
     return homeTypeSimple;
   }
 
-  public void setHomeTypeSimple(long homeTypeSimple) {
+  public void setHomeTypeSimple(Boolean homeTypeSimple) {
     this.homeTypeSimple = homeTypeSimple;
   }
 
-
-  public long getHomeTypeParty() {
+  public Boolean isHomeTypeParty() {
     return homeTypeParty;
   }
 
-  public void setHomeTypeParty(long homeTypeParty) {
+  public void setHomeTypeParty(Boolean homeTypeParty) {
     this.homeTypeParty = homeTypeParty;
   }
 
-
-  public long getHomeTypePovertyAlleviation() {
+  public Boolean isHomeTypePovertyAlleviation() {
     return homeTypePovertyAlleviation;
   }
 
-  public void setHomeTypePovertyAlleviation(long homeTypePovertyAlleviation) {
+  public void setHomeTypePovertyAlleviation(Boolean homeTypePovertyAlleviation) {
     this.homeTypePovertyAlleviation = homeTypePovertyAlleviation;
   }
 
-
-  public long getHomeTypeMonitorHousehold() {
+  public Boolean isHomeTypeMonitorHousehold() {
     return homeTypeMonitorHousehold;
   }
 
-  public void setHomeTypeMonitorHousehold(long homeTypeMonitorHousehold) {
+  public void setHomeTypeMonitorHousehold(Boolean homeTypeMonitorHousehold) {
     this.homeTypeMonitorHousehold = homeTypeMonitorHousehold;
   }
 
-
-  public long getHomeTypeRuralAssurance() {
+  public Boolean isHomeTypeRuralAssurance() {
     return homeTypeRuralAssurance;
   }
 
-  public void setHomeTypeRuralAssurance(long homeTypeRuralAssurance) {
+  public void setHomeTypeRuralAssurance(Boolean homeTypeRuralAssurance) {
     this.homeTypeRuralAssurance = homeTypeRuralAssurance;
   }
 
-
-  public long getHomeTypeCityAssurance() {
+  public Boolean isHomeTypeCityAssurance() {
     return homeTypeCityAssurance;
   }
 
-  public void setHomeTypeCityAssurance(long homeTypeCityAssurance) {
+  public void setHomeTypeCityAssurance(Boolean homeTypeCityAssurance) {
     this.homeTypeCityAssurance = homeTypeCityAssurance;
   }
 
-
-  public long getHomeTypeKeyPoverty() {
+  public Boolean isHomeTypeKeyPoverty() {
     return homeTypeKeyPoverty;
   }
 
-  public void setHomeTypeKeyPoverty(long homeTypeKeyPoverty) {
+  public void setHomeTypeKeyPoverty(Boolean homeTypeKeyPoverty) {
     this.homeTypeKeyPoverty = homeTypeKeyPoverty;
   }
 
-
-  public long getHomeTypeDisabled() {
+  public Boolean isHomeTypeDisabled() {
     return homeTypeDisabled;
   }
 
-  public void setHomeTypeDisabled(long homeTypeDisabled) {
+  public void setHomeTypeDisabled(Boolean homeTypeDisabled) {
     this.homeTypeDisabled = homeTypeDisabled;
   }
 
-
-  public long getHomeTypeHasCompany() {
+  public Boolean isHomeTypeHasCompany() {
     return homeTypeHasCompany;
   }
 
-  public void setHomeTypeHasCompany(long homeTypeHasCompany) {
+  public void setHomeTypeHasCompany(Boolean homeTypeHasCompany) {
     this.homeTypeHasCompany = homeTypeHasCompany;
   }
 
-
-  public long getHomeTypeJail() {
+  public Boolean isHomeTypeJail() {
     return homeTypeJail;
   }
 
-  public void setHomeTypeJail(long homeTypeJail) {
+  public void setHomeTypeJail(Boolean homeTypeJail) {
     this.homeTypeJail = homeTypeJail;
   }
 
-
-  public long getHomeTypePunishment() {
+  public Boolean isHomeTypePunishment() {
     return homeTypePunishment;
   }
 
-  public void setHomeTypePunishment(long homeTypePunishment) {
+  public void setHomeTypePunishment(Boolean homeTypePunishment) {
     this.homeTypePunishment = homeTypePunishment;
   }
 
-
-  public long getHomeTypeDrug() {
+  public Boolean isHomeTypeDrug() {
     return homeTypeDrug;
   }
 
-  public void setHomeTypeDrug(long homeTypeDrug) {
+  public void setHomeTypeDrug(Boolean homeTypeDrug) {
     this.homeTypeDrug = homeTypeDrug;
   }
 
-
-  public long getHomeTypeAccident() {
+  public Boolean isHomeTypeAccident() {
     return homeTypeAccident;
   }
 
-  public void setHomeTypeAccident(long homeTypeAccident) {
+  public void setHomeTypeAccident(Boolean homeTypeAccident) {
     this.homeTypeAccident = homeTypeAccident;
   }
 
-
-  public long getHomeTypeMentalIllness() {
+  public Boolean isHomeTypeMentalIllness() {
     return homeTypeMentalIllness;
   }
 
-  public void setHomeTypeMentalIllness(long homeTypeMentalIllness) {
+  public void setHomeTypeMentalIllness(Boolean homeTypeMentalIllness) {
     this.homeTypeMentalIllness = homeTypeMentalIllness;
   }
-
 
   public String getHouseType() {
     return houseType;
@@ -287,7 +264,6 @@ public class People {
     this.houseType = houseType;
   }
 
-
   public String getHouseFrom() {
     return houseFrom;
   }
@@ -295,7 +271,6 @@ public class People {
   public void setHouseFrom(String houseFrom) {
     this.houseFrom = houseFrom;
   }
-
 
   public String getHouseOwnerName() {
     return houseOwnerName;
@@ -305,7 +280,6 @@ public class People {
     this.houseOwnerName = houseOwnerName;
   }
 
-
   public String getHouseOwnerPhone() {
     return houseOwnerPhone;
   }
@@ -313,7 +287,6 @@ public class People {
   public void setHouseOwnerPhone(String houseOwnerPhone) {
     this.houseOwnerPhone = houseOwnerPhone;
   }
-
 
   public String getHouseOwnerIdCard() {
     return houseOwnerIdCard;
@@ -323,7 +296,6 @@ public class People {
     this.houseOwnerIdCard = houseOwnerIdCard;
   }
 
-
   public String getName() {
     return name;
   }
@@ -331,7 +303,6 @@ public class People {
   public void setName(String name) {
     this.name = name;
   }
-
 
   public String getRelationship() {
     return relationship;
@@ -341,7 +312,6 @@ public class People {
     this.relationship = relationship;
   }
 
-
   public String getSex() {
     return sex;
   }
@@ -350,15 +320,13 @@ public class People {
     this.sex = sex;
   }
 
-
-  public long getAge() {
+  public Integer getAge() {
     return age;
   }
 
-  public void setAge(long age) {
+  public void setAge(Integer age) {
     this.age = age;
   }
-
 
   public String getEthnic() {
     return ethnic;
@@ -368,7 +336,6 @@ public class People {
     this.ethnic = ethnic;
   }
 
-
   public String getMaritalStatus() {
     return maritalStatus;
   }
@@ -376,7 +343,6 @@ public class People {
   public void setMaritalStatus(String maritalStatus) {
     this.maritalStatus = maritalStatus;
   }
-
 
   public String getPoliticalStatus() {
     return politicalStatus;
@@ -386,7 +352,6 @@ public class People {
     this.politicalStatus = politicalStatus;
   }
 
-
   public String getEducation() {
     return education;
   }
@@ -394,7 +359,6 @@ public class People {
   public void setEducation(String education) {
     this.education = education;
   }
-
 
   public String getStudyStatus() {
     return studyStatus;
@@ -404,7 +368,6 @@ public class People {
     this.studyStatus = studyStatus;
   }
 
-
   public String getMilitaryService() {
     return militaryService;
   }
@@ -412,7 +375,6 @@ public class People {
   public void setMilitaryService(String militaryService) {
     this.militaryService = militaryService;
   }
-
 
   public String getCareer() {
     return career;
@@ -422,7 +384,6 @@ public class People {
     this.career = career;
   }
 
-
   public String getWorkAddress() {
     return workAddress;
   }
@@ -430,7 +391,6 @@ public class People {
   public void setWorkAddress(String workAddress) {
     this.workAddress = workAddress;
   }
-
 
   public String getIdCard() {
     return idCard;
@@ -440,7 +400,6 @@ public class People {
     this.idCard = idCard;
   }
 
-
   public String getPhone() {
     return phone;
   }
@@ -449,141 +408,125 @@ public class People {
     this.phone = phone;
   }
 
-
-  public long getSpecialGroupJail() {
+  public Boolean isSpecialGroupJail() {
     return specialGroupJail;
   }
 
-  public void setSpecialGroupJail(long specialGroupJail) {
+  public void setSpecialGroupJail(Boolean specialGroupJail) {
     this.specialGroupJail = specialGroupJail;
   }
 
-
-  public long getSpecialGroupPunishment() {
+  public Boolean isSpecialGroupPunishment() {
     return specialGroupPunishment;
   }
 
-  public void setSpecialGroupPunishment(long specialGroupPunishment) {
+  public void setSpecialGroupPunishment(Boolean specialGroupPunishment) {
     this.specialGroupPunishment = specialGroupPunishment;
   }
 
-
-  public long getSpecialGroupDrug() {
+  public Boolean isSpecialGroupDrug() {
     return specialGroupDrug;
   }
 
-  public void setSpecialGroupDrug(long specialGroupDrug) {
+  public void setSpecialGroupDrug(Boolean specialGroupDrug) {
     this.specialGroupDrug = specialGroupDrug;
   }
 
-
-  public long getSpecialGroupAccident() {
+  public Boolean isSpecialGroupAccident() {
     return specialGroupAccident;
   }
 
-  public void setSpecialGroupAccident(long specialGroupAccident) {
+  public void setSpecialGroupAccident(Boolean specialGroupAccident) {
     this.specialGroupAccident = specialGroupAccident;
   }
 
-
-  public long getSpecialGroupMentalIllness() {
+  public Boolean isSpecialGroupMentalIllness() {
     return specialGroupMentalIllness;
   }
 
-  public void setSpecialGroupMentalIllness(long specialGroupMentalIllness) {
+  public void setSpecialGroupMentalIllness(Boolean specialGroupMentalIllness) {
     this.specialGroupMentalIllness = specialGroupMentalIllness;
   }
 
-
-  public long getKeyAssistantAids() {
+  public Boolean isKeyAssistantAids() {
     return keyAssistantAids;
   }
 
-  public void setKeyAssistantAids(long keyAssistantAids) {
+  public void setKeyAssistantAids(Boolean keyAssistantAids) {
     this.keyAssistantAids = keyAssistantAids;
   }
 
-
-  public long getKeyAssistantTeenager() {
+  public Boolean isKeyAssistantTeenager() {
     return keyAssistantTeenager;
   }
 
-  public void setKeyAssistantTeenager(long keyAssistantTeenager) {
+  public void setKeyAssistantTeenager(Boolean keyAssistantTeenager) {
     this.keyAssistantTeenager = keyAssistantTeenager;
   }
 
-
-  public long getKeyAssistantPetition() {
+  public Boolean isKeyAssistantPetition() {
     return keyAssistantPetition;
   }
 
-  public void setKeyAssistantPetition(long keyAssistantPetition) {
+  public void setKeyAssistantPetition(Boolean keyAssistantPetition) {
     this.keyAssistantPetition = keyAssistantPetition;
   }
 
-
-  public long getKeyAssistantIllegalReligion() {
+  public Boolean isKeyAssistantIllegalReligion() {
     return keyAssistantIllegalReligion;
   }
 
-  public void setKeyAssistantIllegalReligion(long keyAssistantIllegalReligion) {
+  public void setKeyAssistantIllegalReligion(Boolean keyAssistantIllegalReligion) {
     this.keyAssistantIllegalReligion = keyAssistantIllegalReligion;
   }
 
-
-  public long getKeyAssistantMilitary() {
+  public Boolean isKeyAssistantMilitary() {
     return keyAssistantMilitary;
   }
 
-  public void setKeyAssistantMilitary(long keyAssistantMilitary) {
+  public void setKeyAssistantMilitary(Boolean keyAssistantMilitary) {
     this.keyAssistantMilitary = keyAssistantMilitary;
   }
 
-
-  public long getKeyAssistantLeft() {
+  public Boolean isKeyAssistantLeft() {
     return keyAssistantLeft;
   }
 
-  public void setKeyAssistantLeft(long keyAssistantLeft) {
+  public void setKeyAssistantLeft(Boolean keyAssistantLeft) {
     this.keyAssistantLeft = keyAssistantLeft;
   }
 
-
-  public long getKeyAssistantWal() {
-    return keyAssistantWal;
+  public Boolean isKeyAssistantWAL() {
+    return keyAssistantWAL;
   }
 
-  public void setKeyAssistantWal(long keyAssistantWal) {
-    this.keyAssistantWal = keyAssistantWal;
+  public void setKeyAssistantWAL(Boolean keyAssistantWAL) {
+    this.keyAssistantWAL = keyAssistantWAL;
   }
 
-
-  public long getHasCovidVaccine() {
+  public Boolean isHasCovidVaccine() {
     return hasCovidVaccine;
   }
 
-  public void setHasCovidVaccine(long hasCovidVaccine) {
+  public void setHasCovidVaccine(Boolean hasCovidVaccine) {
     this.hasCovidVaccine = hasCovidVaccine;
   }
 
-
-  public long getHasMedicalInsurance() {
+  public Boolean isHasMedicalInsurance() {
     return hasMedicalInsurance;
   }
 
-  public void setHasMedicalInsurance(long hasMedicalInsurance) {
+  public void setHasMedicalInsurance(Boolean hasMedicalInsurance) {
     this.hasMedicalInsurance = hasMedicalInsurance;
   }
 
-
-  public long getHasPension() {
+  public Boolean isHasPension() {
     return hasPension;
   }
 
-  public void setHasPension(long hasPension) {
+  public void setHasPension(Boolean hasPension) {
     this.hasPension = hasPension;
   }
-
 
   public String getHouseStructure() {
     return houseStructure;
@@ -593,15 +536,13 @@ public class People {
     this.houseStructure = houseStructure;
   }
 
-
-  public long getHouseArea() {
+  public Integer getHouseArea() {
     return houseArea;
   }
 
-  public void setHouseArea(long houseArea) {
+  public void setHouseArea(Integer houseArea) {
     this.houseArea = houseArea;
   }
-
 
   public String getRoadToHouse() {
     return roadToHouse;
@@ -611,42 +552,37 @@ public class People {
     this.roadToHouse = roadToHouse;
   }
 
-
-  public long getToiletChanged() {
+  public Boolean isToiletChanged() {
     return toiletChanged;
   }
 
-  public void setToiletChanged(long toiletChanged) {
+  public void setToiletChanged(Boolean toiletChanged) {
     this.toiletChanged = toiletChanged;
   }
 
-
-  public long getHasTapWater() {
+  public Boolean isHasTapWater() {
     return hasTapWater;
   }
 
-  public void setHasTapWater(long hasTapWater) {
+  public void setHasTapWater(Boolean hasTapWater) {
     this.hasTapWater = hasTapWater;
   }
 
-
-  public double getCultivateArea() {
+  public Float getCultivateArea() {
     return cultivateArea;
   }
 
-  public void setCultivateArea(double cultivateArea) {
+  public void setCultivateArea(Float cultivateArea) {
     this.cultivateArea = cultivateArea;
   }
 
-
-  public long getLandTransfer() {
+  public Boolean isLandTransfer() {
     return landTransfer;
   }
 
-  public void setLandTransfer(long landTransfer) {
+  public void setLandTransfer(Boolean landTransfer) {
     this.landTransfer = landTransfer;
   }
-
 
   public String getPrimaryIncome() {
     return primaryIncome;
@@ -656,7 +592,6 @@ public class People {
     this.primaryIncome = primaryIncome;
   }
 
-
   public String getOther() {
     return other;
   }
@@ -664,7 +599,6 @@ public class People {
   public void setOther(String other) {
     this.other = other;
   }
-
 
   public String getVillage() {
     return village;
@@ -674,4 +608,76 @@ public class People {
     this.village = village;
   }
 
+  @Override
+  public String toString() {
+    return "People{" +
+            "id=" + id +
+            ", fatherId='" + fatherId + '\'' +
+            ", ownId='" + ownId + '\'' +
+            ", memberCount=" + memberCount +
+            ", liveAddress='" + liveAddress + '\'' +
+            ", homeAddress='" + homeAddress + '\'' +
+            ", homeName='" + homeName + '\'' +
+            ", liveType='" + liveType + '\'' +
+            ", isAgriculture='" + isAgriculture + '\'' +
+            ", homeTypeSimple=" + homeTypeSimple +
+            ", homeTypeParty=" + homeTypeParty +
+            ", homeTypePovertyAlleviation=" + homeTypePovertyAlleviation +
+            ", homeTypeMonitorHousehold=" + homeTypeMonitorHousehold +
+            ", homeTypeRuralAssurance=" + homeTypeRuralAssurance +
+            ", homeTypeCityAssurance=" + homeTypeCityAssurance +
+            ", homeTypeKeyPoverty=" + homeTypeKeyPoverty +
+            ", homeTypeDisabled=" + homeTypeDisabled +
+            ", homeTypeHasCompany=" + homeTypeHasCompany +
+            ", homeTypeJail=" + homeTypeJail +
+            ", homeTypePunishment=" + homeTypePunishment +
+            ", homeTypeDrug=" + homeTypeDrug +
+            ", homeTypeAccident=" + homeTypeAccident +
+            ", homeTypeMentalIllness=" + homeTypeMentalIllness +
+            ", houseType='" + houseType + '\'' +
+            ", houseFrom='" + houseFrom + '\'' +
+            ", houseOwnerName='" + houseOwnerName + '\'' +
+            ", houseOwnerPhone='" + houseOwnerPhone + '\'' +
+            ", houseOwnerIdCard='" + houseOwnerIdCard + '\'' +
+            ", name='" + name + '\'' +
+            ", relationship='" + relationship + '\'' +
+            ", sex='" + sex + '\'' +
+            ", age=" + age +
+            ", ethnic='" + ethnic + '\'' +
+            ", maritalStatus='" + maritalStatus + '\'' +
+            ", politicalStatus='" + politicalStatus + '\'' +
+            ", education='" + education + '\'' +
+            ", studyStatus='" + studyStatus + '\'' +
+            ", militaryService='" + militaryService + '\'' +
+            ", career='" + career + '\'' +
+            ", workAddress='" + workAddress + '\'' +
+            ", idCard='" + idCard + '\'' +
+            ", phone='" + phone + '\'' +
+            ", specialGroupJail=" + specialGroupJail +
+            ", specialGroupPunishment=" + specialGroupPunishment +
+            ", specialGroupDrug=" + specialGroupDrug +
+            ", specialGroupAccident=" + specialGroupAccident +
+            ", specialGroupMentalIllness=" + specialGroupMentalIllness +
+            ", keyAssistantAids=" + keyAssistantAids +
+            ", keyAssistantTeenager=" + keyAssistantTeenager +
+            ", keyAssistantPetition=" + keyAssistantPetition +
+            ", keyAssistantIllegalReligion=" + keyAssistantIllegalReligion +
+            ", keyAssistantMilitary=" + keyAssistantMilitary +
+            ", keyAssistantLeft=" + keyAssistantLeft +
+            ", keyAssistantWAL=" + keyAssistantWAL +
+            ", hasCovidVaccine=" + hasCovidVaccine +
+            ", hasMedicalInsurance=" + hasMedicalInsurance +
+            ", hasPension=" + hasPension +
+            ", houseStructure='" + houseStructure + '\'' +
+            ", houseArea=" + houseArea +
+            ", roadToHouse='" + roadToHouse + '\'' +
+            ", toiletChanged=" + toiletChanged +
+            ", hasTapWater=" + hasTapWater +
+            ", cultivateArea=" + cultivateArea +
+            ", landTransfer=" + landTransfer +
+            ", primaryIncome='" + primaryIncome + '\'' +
+            ", other='" + other + '\'' +
+            ", village='" + village + '\'' +
+            '}';
+  }
 }

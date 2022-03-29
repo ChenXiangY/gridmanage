@@ -46,6 +46,13 @@ public class ManagerController {
         Set<Map.Entry<String, Object>> set = queryParam.entrySet();
         for (Map.Entry<String, Object> set1 : set) {
             criteria.andEqualTo(set1.getKey(), set1.getValue());
+//            如果要查ownId，那还要查看一下是否还有同级的网格长
+            if(Objects.equals(set1.getKey(), "ownId")){
+                Example.Criteria criteria1 = example.createCriteria();
+                criteria1.andEqualTo("fatherId",set1.getValue());
+                criteria1.andEqualTo("ownId","99");
+                example.or(criteria1);
+            }
         }
         return this.managersMapperCommon.selectByExample(example);
     }

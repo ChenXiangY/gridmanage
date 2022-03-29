@@ -9,6 +9,7 @@ import Home from "./pages/Home/Home";
 import {BrowserRouter, Route, Routes, useParams, useLocation, useNavigate} from "react-router-dom";
 import Event from "./pages/Event/Event";
 import People from "./pages/People/People";
+import HomeFunc from "./pages/Home/HomeFunc";
 
 
 moment.locale('zh-cn');
@@ -77,7 +78,7 @@ export default function App() {
 
             >
                 <Routes>
-                    <Route path="/home" element={<Home/>}/>
+                    <Route path="/home" element={<HomeFunc/>}/>
                     <Route path="/people" element={<People/>}/>
                 </Routes>
             </PageContainer>
