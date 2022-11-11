@@ -72,14 +72,14 @@ export default function useGridSwitcherHook() {
 
     let OrderTree2 = (TreeNode, fatherId, id, value, nodeData) => {
         if (TreeNode.value === fatherId) {
-            let emphasis = {
-                disabled: false,
-                focus: 'self',
-                blurScope: 'coordinateSystem',
-                label: {
-                    width:150
-                }
-            }
+            // let emphasis = {
+            //     disabled: true,
+            //     focus: 'self',
+            //     blurScope: 'coordinateSystem',
+            //     label: {
+            //         width:150
+            //     }
+            // }
             let lableSet = {
                 // width: 100,
                 // height: 100,
@@ -87,7 +87,7 @@ export default function useGridSwitcherHook() {
                 borderWidth: 1,  // 边框宽度
                 // borderRadius: 50,  // 边框圆角
                 borderType: [0],
-                padding: 3,
+                padding: 10,
                 width: 130,
                 // overflow:'break',
                 // borderColor: "#B034FF",   // 文字块的边框色
@@ -100,6 +100,7 @@ export default function useGridSwitcherHook() {
                 //     ]
                 // )
                 // ,
+                backgroundColor:"WhiteSmoke",
                 rich: {
                     backtitle: {
                         backgroundColor: '#63a9e8',
@@ -109,7 +110,7 @@ export default function useGridSwitcherHook() {
                     },
                     testimg: {
                         backgroundColor: {
-                            image: TreeNode.profileImg,
+                            image: nodeData.profileImg,
                         },
                         height: 80,
                         width: 80,
@@ -154,7 +155,7 @@ export default function useGridSwitcherHook() {
                     //     resultgridstring = resultgridstring.slice(0,5)+'\n'+resultgridstring.slice(5)
                     // }
                     // return '{backtitle|\t\n\n}' + '{testimg|}\n'
-                        return  '{testmessage0|' + nodeData.name + '}\n'
+                        return '{testimg|}\n'+ '{testmessage0|' + nodeData.name + '}\n'
                         + '{testmessage1|' + nodeData.ownId + '}\n'
                         + '{testmessage1|' + nodeData.phone + '}\n'
                         + '{testmessage1|' + resultgridstring + '}'
@@ -172,8 +173,9 @@ export default function useGridSwitcherHook() {
                     borderWidth: 1,  // 边框宽度
                     // borderRadius: 50,  // 边框圆角
                     borderType: [0],
-                    padding: 3,
+                    padding: 10,
                     width: 260,
+                    backgroundColor:"white",
                     // overflow:'break',
                     // borderColor: "#B034FF",   // 文字块的边框色
                     // backgroundColor: new echarts.graphic.LinearGradient(
@@ -244,7 +246,7 @@ export default function useGridSwitcherHook() {
 
                         // return '{backtitle|\t\n\n}'
                             return  '{testimg1|}' + '\t' + '{testimg2|}\n'
-                            + '{testmessage0|' + TreeNode.nodeData.name + '}\t\t\t\t' + '{testmessage0|' + nodeData.name + '}\n'
+                            + '{testmessage0|' + TreeNode.name + '}\t\t\t\t' + '{testmessage0|' + nodeData.name + '}\n'
                             + '{testmessage1|' + TreeNode.nodeData.phone + '}\t\t\t\t\t' + '{testmessage1|' + nodeData.phone + '}\n'
                             + '{testmessage1|' + TreeNode.nodeData.ownId + '}\n'
                             + '{testmessage1|' + resultgridstring + '}'
@@ -274,17 +276,20 @@ export default function useGridSwitcherHook() {
                     // },
                 }
                 TreeNode.label = lableSet
-                emphasis = {
-                    disabled: false,
-                    focus: 'self',
-                    blurScope: 'coordinateSystem',
-                    label: {
-                        width:280
-                    }
-                }
-                TreeNode.emphasis=emphasis
+                // emphasis = {
+                //     disabled: false,
+                //     focus: 'self',
+                //     blurScope: 'coordinateSystem',
+                //     label: {
+                //         width:280
+                //     }
+                // }
+                // TreeNode.emphasis=emphasis
             } else {
-                TreeNode.children.push({value: id, name: value, emphasis:emphasis,label: lableSet, nodeData: nodeData})
+                nodeData['value']=id
+                nodeData['label']=lableSet
+                nodeData['nodeData']={...nodeData}
+                TreeNode.children.push(nodeData)
             }
         } else {
             if (typeof (TreeNode.children) !== 'undefined' && TreeNode.children.length !== 0) {

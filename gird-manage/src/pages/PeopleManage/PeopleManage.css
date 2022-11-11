@@ -1,0 +1,15 @@
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.GridMessage{
+    padding:0px;
+}
+.ant-form-item{
+    margin-bottom: 5px;
+}
+.ant-table-cell{
+    padding:5px;
+    line-height: normal;
+}

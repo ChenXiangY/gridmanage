@@ -89,13 +89,6 @@ export default function ManagersTree(props) {
                 initialTreeDepth: 1,
                 edgeShape: 'curve',
                 edgeForkPosition: '0%',
-                emphasis: {
-                    disabled: false,
-                    focus: 'self',
-                    blurScope: 'coordinateSystem',
-                    label: {}
-
-                },
             }
         ]
     }

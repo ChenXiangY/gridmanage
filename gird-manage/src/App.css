@@ -5,3 +5,11 @@
 .homePageLayout {
   height: 100vh;
 }
+.page-header{
+  padding: 0px;
+  margin: 0px;
+}
+.header{
+  padding: 0px;
+
+}

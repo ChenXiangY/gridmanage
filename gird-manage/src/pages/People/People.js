@@ -23,17 +23,9 @@ export default function People() {
     const [list, setList] = useState([]);
     const [columns, setColumns] = useState([]);
     const [gridMessage, setGridMessage] = useState([]);
-
-    const [test, setTest] = useState(0);
-
     useEffect(() => {
         getGridMessage("17")
-        test1()
     }, []);
-    let test1 = () => {
-        console.log('test')
-        setTest(1)
-    }
     let headers = {
         "Content-Type": "application/json",
         'Access-Control-Allow-Origin': '*'
@@ -120,8 +112,8 @@ export default function People() {
     }
     let getNodeData = (value, ele) => {
         //    拿到nodedata之后,传值给request,得到当前节点下所有人员的信息.
-        setSearchParams({ownId: ele.nodeData[0].ownId})
-        setNodeData(ele.nodeData)
+        setSearchParams({ownId: ele.ownId})
+        // setNodeData(ele.nodeData)
         getGridMessage(value[value.length - 1])
     }
     let homeTypeKeyValue = {
@@ -287,106 +279,109 @@ export default function People() {
         }
     }
     return (
-        <div className={'content'}>
-            <div className={'header'}>
-                <GridSwitcherHookVersion
-                    value={TreeManagers}
-                    style={{
-                        width: '90%'
-                    }}
-                    getNodeData={getNodeData}
-                />
-                <Button onClick={(value) => {
-                    setSearchParams(delete searchParams.ownId)
-                }}>
-                    重置
-                </Button>
-                {/*<PeopleFilterBar/>*/}
+        <div>
 
-                {/*<PeopleSearchBar setSearchParams={setParams}/>*/}
-                {/*点击查询获取三个的值。做处理后发送请求，查数据返回数据*/}
-
-            </div>
-            {/*传入nodedata，三个东西的所有项目，获取左右数据*/}
-            <div>
-                <ProCard split={"vertical"}>
-                    <ProCard className={"GridMessage"} colSpan={"20%"}
-                    >
-                        <div style={{
-                            display: NodeData.length === 0 ? "None" : "flex"
-                        }}>
-                            <div className={'gridMessage'}>
-                                {renderBasicMessage()}
-                                <p>网格编号：{NodeData[0].ownId}</p>
-                                <p>网格名称：{NodeData[0].gridName}</p>
-                                <p>人口:{gridMessage.memberCount}</p>
-                                <p>一般户数量:{gridMessage.homeTypeSimple}</p>
-                                <p>党员户数量:{gridMessage.homeTypeParty}</p>
-                                <p>脱贫户数量:{gridMessage.homeTypePovertyAlleviation}</p>
-                                <p>监测户数量:{gridMessage.homeTypeMonitorHousehold}</p>
-                                <p>城市低保户:{gridMessage.homeTypeCityAssurance}</p>
-                                <p>重点帮扶关注人员数量:{gridMessage.homeTypeKeyPoverty}</p>
-                                <p>残疾户数量:{gridMessage.homeTypeDisabled}</p>
-                                <p>刑满释放户数量:{gridMessage.homeTypeJail}</p>
-                                <p>社区矫正户数量:{gridMessage.homeTypePunishment}</p>
-                                <p>吸毒人员数量:{gridMessage.homeTypeDrug}</p>
-                                <p>肇事肇祸数量:{gridMessage.homeTypeAccident}</p>
-                                <p>精神障碍人员数量:{gridMessage.homeTypeMentalIllness}</p>
-                                <p>接种新冠疫苗数量:{gridMessage.hasCovidVaccine}</p>
-                                <p>参加医疗保险人员:{gridMessage.hasMedicalInsurance}</p>
-                                <p>参加养老保险人员:{gridMessage.hasPension}</p>
-                                <p>平均住房面积:{gridMessage.houseArea}</p>
-                                <p>改厕户数量:{gridMessage.toiletChanged}</p>
-                                <p>通自来水数量:{gridMessage.hasTapWater}</p>
-                                <p>平均耕地面积:{gridMessage.cultivateArea}</p>
-                            </div>
-                        </div>
-                    </ProCard>
-                    <ProCard>
-                        <ProTable
-                            columns={peopleColumns}
-                            params={searchParams}
-                            request={async (
-                                // 第一个参数 params 查询表单和 params 参数的结合
-                                // 第一个参数中一定会有 pageSize 和  current ，这两个参数是 antd 的规范
-                                params: {
-                                    pageSize: 20
-                                },
-                                sort,
-                                filter,
-                            ) => {
-                                // 这里需要返回一个 Promise,在返回之前你可以进行数据转化
-                                // 如果需要转化参数可以在这里进行修改
-                                return axios.post(
-                                    'http://localhost:8080/getPeopleListByColumn',
-                                    params,
-                                    {
-                                        headers: headers
-                                    }
-                                ).then((res) => {
-                                    //处理res.data,处理户属性,特殊人群,重点帮扶人员
-                                    handleData(res.data.data)
-                                    return ({
-                                        data: res.data.data,
-                                        success: true,
-                                        total: res.data.extraMessage
-                                    })
-                                })
-                            }}
-                            search={{
-                                optionRender: false,
-                                collapsed: false,
-                            }}
-                            rowKey={"id"}
-                            pagination={{
-                                defaultPageSize: 20, onChange: (page, pageSize) => {
-
-                                }
-                            }}
-                        />
-                    </ProCard>
-                </ProCard>
-            </div>
         </div>
+        // <div className={'content'}>
+        //     <div className={'header'}>
+        //         <GridSwitcherHookVersion
+        //             value={TreeManagers}
+        //             style={{
+        //                 width: '90%'
+        //             }}
+        //             getNodeData={getNodeData}
+        //         />
+        //         <Button onClick={(value) => {
+        //             setSearchParams(delete searchParams.ownId)
+        //         }}>
+        //             重置
+        //         </Button>
+        //         {/*<PeopleFilterBar/>*/}
+        //
+        //         {/*<PeopleSearchBar setSearchParams={setParams}/>*/}
+        //         {/*点击查询获取三个的值。做处理后发送请求，查数据返回数据*/}
+        //
+        //     </div>
+        //     {/*传入nodedata，三个东西的所有项目，获取左右数据*/}
+        //     <div>
+        //         <ProCard split={"vertical"}>
+        //             <ProCard className={"GridMessage"} colSpan={"20%"}
+        //             >
+        //                 <div style={{
+        //                     display: NodeData.length === 0 ? "None" : "flex"
+        //                 }}>
+        //                     <div className={'gridMessage'}>
+        //                         {renderBasicMessage()}
+        //                         <p>网格编号：{NodeData[0].ownId}</p>
+        //                         <p>网格名称：{NodeData[0].gridName}</p>
+        //                         <p>人口:{gridMessage.memberCount}</p>
+        //                         <p>一般户数量:{gridMessage.homeTypeSimple}</p>
+        //                         <p>党员户数量:{gridMessage.homeTypeParty}</p>
+        //                         <p>脱贫户数量:{gridMessage.homeTypePovertyAlleviation}</p>
+        //                         <p>监测户数量:{gridMessage.homeTypeMonitorHousehold}</p>
+        //                         <p>城市低保户:{gridMessage.homeTypeCityAssurance}</p>
+        //                         <p>重点帮扶关注人员数量:{gridMessage.homeTypeKeyPoverty}</p>
+        //                         <p>残疾户数量:{gridMessage.homeTypeDisabled}</p>
+        //                         <p>刑满释放户数量:{gridMessage.homeTypeJail}</p>
+        //                         <p>社区矫正户数量:{gridMessage.homeTypePunishment}</p>
+        //                         <p>吸毒人员数量:{gridMessage.homeTypeDrug}</p>
+        //                         <p>肇事肇祸数量:{gridMessage.homeTypeAccident}</p>
+        //                         <p>精神障碍人员数量:{gridMessage.homeTypeMentalIllness}</p>
+        //                         <p>接种新冠疫苗数量:{gridMessage.hasCovidVaccine}</p>
+        //                         <p>参加医疗保险人员:{gridMessage.hasMedicalInsurance}</p>
+        //                         <p>参加养老保险人员:{gridMessage.hasPension}</p>
+        //                         <p>平均住房面积:{gridMessage.houseArea}</p>
+        //                         <p>改厕户数量:{gridMessage.toiletChanged}</p>
+        //                         <p>通自来水数量:{gridMessage.hasTapWater}</p>
+        //                         <p>平均耕地面积:{gridMessage.cultivateArea}</p>
+        //                     </div>
+        //                 </div>
+        //             </ProCard>
+        //             <ProCard>
+        //                 <ProTable
+        //                     columns={peopleColumns}
+        //                     params={searchParams}
+        //                     request={async (
+        //                         // 第一个参数 params 查询表单和 params 参数的结合
+        //                         // 第一个参数中一定会有 pageSize 和  current ，这两个参数是 antd 的规范
+        //                         params: {
+        //                             pageSize: 20
+        //                         },
+        //                         sort,
+        //                         filter,
+        //                     ) => {
+        //                         // 这里需要返回一个 Promise,在返回之前你可以进行数据转化
+        //                         // 如果需要转化参数可以在这里进行修改
+        //                         return axios.post(
+        //                             'http://localhost:8080/getPeopleListByColumn',
+        //                             params,
+        //                             {
+        //                                 headers: headers
+        //                             }
+        //                         ).then((res) => {
+        //                             //处理res.data,处理户属性,特殊人群,重点帮扶人员
+        //                             handleData(res.data.data)
+        //                             return ({
+        //                                 data: res.data.data,
+        //                                 success: true,
+        //                                 total: res.data.extraMessage
+        //                             })
+        //                         })
+        //                     }}
+        //                     search={{
+        //                         optionRender: false,
+        //                         collapsed: false,
+        //                     }}
+        //                     rowKey={"id"}
+        //                     pagination={{
+        //                         defaultPageSize: 20, onChange: (page, pageSize) => {
+        //
+        //                         }
+        //                     }}
+        //                 />
+        //             </ProCard>
+        //         </ProCard>
+        //     </div>
+        // </div>
     )
 }

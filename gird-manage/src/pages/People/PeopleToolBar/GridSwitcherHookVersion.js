@@ -6,7 +6,7 @@ export default function GridSwitcherHookVersion(props){
     return (
         <Cascader
             fieldNames={{label: 'name'}}
-            options={props.value}
+            options={props.options}
             onChange={(value, ele) => {
                 ele=ele[ele.length-1]
                 props.getNodeData(value, ele)

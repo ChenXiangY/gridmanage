@@ -10,6 +10,7 @@ import {BrowserRouter, Route, Routes, useParams, useLocation, useNavigate} from 
 import Event from "./pages/Event/Event";
 import People from "./pages/People/People";
 import HomeFunc from "./pages/Home/HomeFunc";
+import PeopleManage from "./pages/PeopleManage/PeopleManage";
 
 
 moment.locale('zh-cn');
@@ -29,10 +30,11 @@ export default function App() {
                     <div style={{
                         textAlign: 'center',
                         fontSize: '20px',
-                        fontWeight: 'bold'
+                        fontWeight: 'bold',
+                        padding:'0px',
+                        margin:'0px'
                     }}
                     >
-                        日月湖街道五级网格化管理系统
                     </div>
                 )
             }}
@@ -53,6 +55,11 @@ export default function App() {
                         name: '人员管理',
                         component: './pages/People/People'
                     },
+                    {
+                        path:"/peopleManage",
+                        name:"人员管理新",
+                        component:'./pages/People/peopleManage'
+                    }
 
                 ]
             }}
@@ -69,17 +76,17 @@ export default function App() {
         >
             <PageContainer
                 header={{
-                    CSSStyleRule: {padding: '0px'}
+                    className:'page-header'
                 }}
                 // 一个级联选择框
                 // 一个搜索框
                 // 下方内容左侧显示网格长和本级网格信息
                 // 右方显示架构图
-
             >
                 <Routes>
                     <Route path="/home" element={<HomeFunc/>}/>
-                    <Route path="/people" element={<People/>}/>
+                    {/*<Route path="/people" element={<People/>}/>*/}
+                    <Route path="/peopleManage" element={<PeopleManage/>} />
                 </Routes>
             </PageContainer>
         </ProLayout>

@@ -13,8 +13,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan(basePackages = "com.gridmanage.backend.mapper")
 public class GridManageBackEndApplication {
 
-
-
     public static void main(String[] args) {
         SpringApplication.run(GridManageBackEndApplication.class, args);
     }

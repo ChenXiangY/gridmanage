@@ -8,10 +8,12 @@ import com.gridmanage.backend.mapper.ManagersMapperCommon;
 import com.gridmanage.backend.service.ManagerService;
 import org.apache.catalina.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jmx.export.naming.MetadataNamingStrategy;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Example;
 
 import java.awt.*;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.List;
 
@@ -39,6 +41,16 @@ public class ManagerController {
     }
 
     @ResponseBody
+    @RequestMapping("/getSecondaryManagers")
+    public List<Managers> getSecondaryManagers(String fatherId){
+        Example example = new Example(Managers.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("fatherId",fatherId);
+        List<Managers> managers = this.managersMapperCommon.selectByExample(example);
+        return managers;
+    }
+
+    @ResponseBody
     @RequestMapping("/getManagesByColumn")
     public List<Managers> getManagesByColumn(@RequestBody HashMap<String, Object> queryParam) {
         Example example = new Example(Managers.class);
@@ -63,8 +75,14 @@ public class ManagerController {
 //        根据ownId直接查出来网格数据
         GridMessage gridMessage = this.managersMapperCommon.getManagersWithGridMessage(managers.getOwnId());
         return gridMessage;
-
     }
+
+    @ResponseBody
+    @RequestMapping("/getCovidMessage")
+    public GridMessage getCovidMessage(String ownId){
+        return this.managersMapperCommon.getCovidMessage(ownId);
+    }
+
 
 }
 
